@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: pos-gateway
+  freemarker:
+    template-loader-path:
+      - classpath:/templates
+    suffix: ftl
+    charset: UTF-8
+    check-template-location: false
+    expose-spring-macro-helpers: true
+
+  #MYSQL DATASOURCE
+  datasource:
+    url: jdbc:mysql://localhost:3306/posDB
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 60000
+      max-lifetime: 30000
+      connection-timeout: 60000
+      pool-name: HikariConectonPoolIPSLDatabase
+  jpa:
+    hibernate.ddl-auto: none
+    generate-ddl: false
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+configs:
+  mpesa-stk-endpoint: https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest
+  mpesa-auth-endpoint: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+  mpesa-consumer-key: Zb5GIc5gjOX3PE05EAMdWaaIF2lt3EJ4MvNrlfKbS4k0ZKLo
+  mpesa-secret-key: HLDaYLZlMEQnacwMoVGrtP0ItfkPHQ1GQ8KXvHxdlMPaENIn8oUsPAxSrZmGX4zr
+  mpesa-basic-auth: WmI1R0ljNWdqT1gzUEUwNUVBTWRXYWFJRjJsdDNFSjRNdk5ybGZLYlM0azBaS0xvOkhMRGFZTFpsTUVRbmFjd01vVkdydFAwSXRma1BIUTFHUThLWHZIeGRsTVBhRU5JbjhvVXNQQXhTclptR1g0enI=
+  mpesa-grant-type: client_credentials
+  mpesa-password: MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjUwMzI4MTcyMzMy
+  mpesa-business-short-code: 174379
+  mpesa-call-back: https://297a-105-163-158-137.ngrok-free.app/api/v1/forloop-generic/mpesa-callback
+  sms-endpoint: https://api.africastalking.com/version1/messaging/bulk
+  sms-api-key: MyAppApiKey
+
+
+
