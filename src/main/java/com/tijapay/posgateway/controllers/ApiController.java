@@ -43,7 +43,7 @@ public class ApiController {
         return orderservice.payementRequest(request);
     }
 
-    @PostMapping(value = "/mpesa-callback", produces = {"application/json"})
+    @PostMapping(value = "/mpesa/callback", produces = {"application/json"})
     public ResponseEntity<?> stkPushCallback(@RequestBody MpesaCallback request, OrderEntity entity) {
 
         Map validateRes = new HashMap();

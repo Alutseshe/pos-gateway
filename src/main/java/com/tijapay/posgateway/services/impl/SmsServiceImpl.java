@@ -37,6 +37,7 @@ public class SmsServiceImpl implements SmsService {
                     httpEntity,
                     SmsResponse.class);
             return responseEntity.getBody();
+
         }catch (HttpClientErrorException | HttpServerErrorException e){
             logger.info("Error: " + e.getStatusCode() + " - " + e.getStatusText());
             logger.info("Response Body: " + e.getResponseBodyAsString());
