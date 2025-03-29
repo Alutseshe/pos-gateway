@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.apache.commons.codec.binary.Base64;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 
 import static com.tijapay.posgateway.utils.CacheConfig.TOKEN_DETAILS_CACHE;
@@ -36,11 +38,14 @@ public class TokenGenerateService {
         formData.add("grant_type", applicationProperties.getMpesaGrantType());
         log.info("Outgoing token Request {} to URL {}", new Gson().toJson(formData), applicationProperties.getMpesaAuthEndpoint());
 
+        String auth = applicationProperties.getMpesaConsumerKey() + ":" + applicationProperties.getMpesaSecretKey();
+        byte[] baciAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.ISO_8859_1));
+
         try {
             String resp = WebClient.create()
                     .get()
                     .uri(applicationProperties.getMpesaAuthEndpoint())
-                    .headers(httpHeaders -> httpHeaders.setBasicAuth(applicationProperties.getMpesaBasicAuth()))
+                    .headers(httpHeaders -> httpHeaders.setBasicAuth(new String(baciAuth)))
                     .headers(httpHeaders -> httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON)))
                     .exchange()
                     .block()

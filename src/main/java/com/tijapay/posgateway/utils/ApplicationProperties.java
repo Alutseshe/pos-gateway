@@ -16,6 +16,33 @@ public class ApplicationProperties {
     private String mpesaPassword;
     private Long mpesaBusinessShortCode;
     private String mpesaCallBack;
+    private String mpesaPassKey;
+    private String smsEndpoint;
+    private String smsApiKey;
+
+    public String getSmsEndpoint() {
+        return smsEndpoint;
+    }
+
+    public void setSmsEndpoint(String smsEndpoint) {
+        this.smsEndpoint = smsEndpoint;
+    }
+
+    public String getSmsApiKey() {
+        return smsApiKey;
+    }
+
+    public void setSmsApiKey(String smsApiKey) {
+        this.smsApiKey = smsApiKey;
+    }
+
+    public String getMpesaPassKey() {
+        return mpesaPassKey;
+    }
+
+    public void setMpesaPassKey(String mpesaPassKey) {
+        this.mpesaPassKey = mpesaPassKey;
+    }
 
     public String getMpesaStkEndpoint() {
         return mpesaStkEndpoint;

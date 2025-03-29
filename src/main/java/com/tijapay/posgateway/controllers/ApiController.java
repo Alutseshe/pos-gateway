@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/v1/tijapay-gateway/")
+@RequestMapping("api/v1/gateway/")
 public class ApiController {
 
     private static final Logger log = LoggerFactory.getLogger(ApiController.class);
@@ -31,7 +31,7 @@ public class ApiController {
     private final Gson gson;
     private final OrderRepository orderRepository;
 
-    @Autowired
+
     public ApiController(Orderservice orderservice, Gson gson, OrderRepository orderRepository){
         this.orderservice = orderservice;
         this.gson = gson;

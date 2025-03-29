@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 
 @Service
@@ -38,9 +39,14 @@ public class Orderservice {
 
         logger.info("RECEIVED PAYMENT REQUEST:::: "+ gson.toJson(request));
 
-        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String lipaTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 
         OrderEntity findOrder = orderRepository.findDistinctByOrderNumber(request.getOderNumber());
+
+        String combinedString = applicationProperties.getMpesaBusinessShortCode() + applicationProperties.getMpesaPassKey() + lipaTime;
+        String lipaNaMpesaPassword = Base64.getEncoder().encodeToString(combinedString.getBytes());
+
+        System.out.println(lipaNaMpesaPassword);
 
         OrderEntity entity = new OrderEntity();
         entity.setOrderNumber(request.getOderNumber());
@@ -54,8 +60,8 @@ public class Orderservice {
         orderRepository.save(entity);
 
         mpesaService.stkPushRequest(TijaPayUtils.stkPushRequest(applicationProperties.getMpesaBusinessShortCode(),
-                applicationProperties.getMpesaPassword(),
-                "20250328172332", "CustomerPayBillOnline",
+                lipaNaMpesaPassword,
+                lipaTime, "CustomerPayBillOnline",
                 request.getAmount(), request.getMsisdn(), applicationProperties.getMpesaBusinessShortCode(),
                 request.getMsisdn(), applicationProperties.getMpesaCallBack(), request.getOderNumber(), "Test"));
 

@@ -28,11 +28,11 @@ public class SmsServiceImpl implements SmsService {
     public SmsResponse sendSms(SmsRequest smsRequest){
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("apiKey", "MyApiKey");
+        headers.add("apiKey", applicationProperties.getSmsApiKey());
         HttpEntity<SmsRequest> httpEntity = new HttpEntity<>(smsRequest, headers);
         try {
             RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<SmsResponse> responseEntity = restTemplate.exchange(applicationProperties.getMpesaStkEndpoint(),
+            ResponseEntity<SmsResponse> responseEntity = restTemplate.exchange(applicationProperties.getSmsEndpoint(),
                     HttpMethod.POST,
                     httpEntity,
                     SmsResponse.class);

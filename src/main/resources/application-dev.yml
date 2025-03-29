@@ -35,11 +35,10 @@ configs:
   mpesa-auth-endpoint: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
   mpesa-consumer-key: Zb5GIc5gjOX3PE05EAMdWaaIF2lt3EJ4MvNrlfKbS4k0ZKLo
   mpesa-secret-key: HLDaYLZlMEQnacwMoVGrtP0ItfkPHQ1GQ8KXvHxdlMPaENIn8oUsPAxSrZmGX4zr
-  mpesa-basic-auth: WmI1R0ljNWdqT1gzUEUwNUVBTWRXYWFJRjJsdDNFSjRNdk5ybGZLYlM0azBaS0xvOkhMRGFZTFpsTUVRbmFjd01vVkdydFAwSXRma1BIUTFHUThLWHZIeGRsTVBhRU5JbjhvVXNQQXhTclptR1g0enI=
   mpesa-grant-type: client_credentials
-  mpesa-password: MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjUwMzI4MTcyMzMy
   mpesa-business-short-code: 174379
   mpesa-call-back: https://297a-105-163-158-137.ngrok-free.app/api/v1/forloop-generic/mpesa-callback
+  mpesa-pass-key: bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
   sms-endpoint: https://api.africastalking.com/version1/messaging/bulk
   sms-api-key: MyAppApiKey
 
