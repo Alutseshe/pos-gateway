@@ -13,12 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -43,6 +41,11 @@ public class ApiController {
         return orderservice.payementRequest(request);
     }
 
+    @GetMapping(value = "getPayments")
+    public List<OrderEntity> getPayments(){
+        return orderRepository.findAll();
+    }
+
     @PostMapping(value = "/mpesa/callback", produces = {"application/json"})
     public ResponseEntity<?> stkPushCallback(@RequestBody MpesaCallback request, OrderEntity entity) {
 
@@ -58,6 +61,8 @@ public class ApiController {
                 if(orderRepository.findDistinctByMerchantRequestID(request.getBody().getStkCallback().getMerchantRequestId()) != null){
                     OrderEntity updateMpesaReference = orderRepository.findDistinctByMerchantRequestID(request.getBody().getStkCallback().getMerchantRequestId());
                     updateMpesaReference.setMpesaReceiptNumber(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(1).getValue());
+                    updateMpesaReference.setStatus("00");
+                    updateMpesaReference.setStatusMessage("Paid Successful");
                     if (request.getBody().getStkCallback().getCallbackMetadata().getItem().get(2).getValue() == null) {
                         updateMpesaReference.setTransactionDate(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(3).getValue());
                     } else {

@@ -1,6 +1,8 @@
 package com.tijapay.posgateway.model;
 
 
+import java.util.List;
+
 public class OrderRequest {
 
     private String oderNumber;
@@ -9,6 +11,15 @@ public class OrderRequest {
     private String currency;
     private String countyCode;
     private Long amount;
+    private List<String> orderItems;
+
+    public List<String> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<String> orderItems) {
+        this.orderItems = orderItems;
+    }
 
     public String getOderNumber() {
         return oderNumber;

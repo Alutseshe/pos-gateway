@@ -31,14 +31,14 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
 
 configs:
-  mpesa-stk-endpoint: https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest
-  mpesa-auth-endpoint: https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
-  mpesa-consumer-key: Zb5GIc5gjOX3PE05EAMdWaaIF2lt3EJ4MvNrlfKbS4k0ZKLo
-  mpesa-secret-key: HLDaYLZlMEQnacwMoVGrtP0ItfkPHQ1GQ8KXvHxdlMPaENIn8oUsPAxSrZmGX4zr
+  mpesa-stk-endpoint: https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest
+  mpesa-auth-endpoint: https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+  mpesa-consumer-key: KbIb5w8D2Be7OLXJayJOhwxicxxhzXhw
+  mpesa-secret-key: 0bPTugYG0mNjIKRg
   mpesa-grant-type: client_credentials
-  mpesa-business-short-code: 174379
-  mpesa-call-back: https://297a-105-163-158-137.ngrok-free.app/api/v1/forloop-generic/mpesa-callback
-  mpesa-pass-key: bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
+  mpesa-business-short-code: 552055
+  mpesa-call-back: https://pos-gateway.visystem.net/api/v1/gateway/mpesa/callback
+  mpesa-pass-key: 970bdbce9189ea2d7a7f24de6275057b4fed6ec34afcb0c7087777d0db05c887
   sms-endpoint: https://api.africastalking.com/version1/messaging/bulk
   sms-api-key: MyAppApiKey
 

@@ -25,6 +25,8 @@ public class OrderEntity {
     private String status;
     @Column(name ="status_message")
     private String statusMessage;
+    @Column(name = "order_items")
+    private String orderItems;
     //M-pesa STK Push Request details
     @Column(name ="merchant_request_id")
     private String merchantRequestID;
@@ -46,6 +48,14 @@ public class OrderEntity {
     private String countryCode;
     @Column(name ="transaction_date")
     private String transactionDate;
+
+    public String getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(String orderItems) {
+        this.orderItems = orderItems;
+    }
 
     public String getTransactionDate() {
         return transactionDate;
