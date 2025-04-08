@@ -74,7 +74,7 @@ public class ApiController {
                     OrderEntity updateMpesaReference = orderRepository.findDistinctByMerchantRequestID(request.getBody().getStkCallback().getMerchantRequestId());
                     updateMpesaReference.setMpesaReceiptNumber(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(1).getValue());
                     updateMpesaReference.setStatus("00");
-                    updateMpesaReference.setStatusMessage("Paid Successful");
+                    updateMpesaReference.setStatusMessage("Paid");
                     if (request.getBody().getStkCallback().getCallbackMetadata().getItem().get(2).getValue() == null) {
                         updateMpesaReference.setTransactionDate(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(3).getValue());
                     } else {
