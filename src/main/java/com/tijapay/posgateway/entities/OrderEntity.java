@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "api_orders")
@@ -27,6 +29,8 @@ public class OrderEntity {
     private String statusMessage;
     @Column(name = "order_items")
     private String orderItems;
+    @Column(name = "payment_date")
+    private LocalDate paymentDate;
     //M-pesa STK Push Request details
     @Column(name ="merchant_request_id")
     private String merchantRequestID;
@@ -48,6 +52,14 @@ public class OrderEntity {
     private String countryCode;
     @Column(name ="transaction_date")
     private String transactionDate;
+
+    public LocalDate getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
+    }
 
     public String getOrderItems() {
         return orderItems;

@@ -41,6 +41,10 @@ configs:
   mpesa-pass-key: 970bdbce9189ea2d7a7f24de6275057b4fed6ec34afcb0c7087777d0db05c887
   sms-endpoint: https://api.africastalking.com/version1/messaging/bulk
   sms-api-key: MyAppApiKey
+  twilio-account-sid: AC35fdb93d65f711ab9f14a73c1863a24b
+  twilio-auth-token: 73fa953f686234f6b0ef5be94e012070
+  twilio-whatsapp-number: whatsapp:+14155238886  # Your Twilio WhatsApp number
+  twilio-chef-whatsapp-number: whatsapp:+254702615277  # Chef's WhatsApp number
 
 
 

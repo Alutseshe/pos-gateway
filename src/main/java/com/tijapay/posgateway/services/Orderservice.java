@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.Date;
 
@@ -40,6 +41,9 @@ public class Orderservice {
         logger.info("RECEIVED PAYMENT REQUEST:::: "+ gson.toJson(request));
 
         String lipaTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String orderDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        System.out.println("Local Date" + orderDate);
 
         OrderEntity findOrder = orderRepository.findDistinctByOrderNumber(request.getOderNumber());
 
@@ -58,6 +62,7 @@ public class Orderservice {
         entity.setCurrency(request.getCurrency());
         entity.setCountryCode(request.getCountyCode());
         entity.setOrderItems(String.valueOf(request.getOrderItems()));
+        entity.setPaymentDate(LocalDate.parse(orderDate));
         orderRepository.save(entity);
 
         mpesaService.stkPushRequest(TijaPayUtils.stkPushRequest(applicationProperties.getMpesaBusinessShortCode(),

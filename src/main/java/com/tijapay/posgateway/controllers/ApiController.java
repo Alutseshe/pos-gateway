@@ -4,13 +4,15 @@ import com.google.gson.Gson;
 import com.tijapay.posgateway.entities.OrderEntity;
 import com.tijapay.posgateway.model.OrderReponse;
 import com.tijapay.posgateway.model.OrderRequest;
+import com.tijapay.posgateway.model.ReportModel;
 import com.tijapay.posgateway.model.mpesa.MpesaCallback;
 import com.tijapay.posgateway.repos.OrderRepository;
+import com.tijapay.posgateway.services.Order;
 import com.tijapay.posgateway.services.Orderservice;
+import com.tijapay.posgateway.services.WhatsAppService;
 import com.tijapay.posgateway.utils.ConvertToJson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,22 +30,32 @@ public class ApiController {
     private final Orderservice orderservice;
     private final Gson gson;
     private final OrderRepository orderRepository;
+    private final Order order;
+    private final WhatsAppService whatsAppService;
 
 
-    public ApiController(Orderservice orderservice, Gson gson, OrderRepository orderRepository){
+    public ApiController(Orderservice orderservice, Gson gson, OrderRepository orderRepository, Order order, WhatsAppService whatsAppService){
         this.orderservice = orderservice;
         this.gson = gson;
         this.orderRepository = orderRepository;
+        this.order = order;
+        this.whatsAppService = whatsAppService;
     }
 
     @PostMapping(value = "payment")
     public OrderReponse payment(@RequestBody OrderRequest request){
+        whatsAppService.sendWhatsAppNotification(request);
         return orderservice.payementRequest(request);
     }
 
     @GetMapping(value = "getPayments")
     public List<OrderEntity> getPayments(){
         return orderRepository.findAll();
+    }
+
+    @PostMapping(value = "getByDate")
+    public List<OrderEntity> getPayments(@RequestBody ReportModel dateRangeRequest) {
+        return order.getOrdersByDateRange(dateRangeRequest);
     }
 
     @PostMapping(value = "/mpesa/callback", produces = {"application/json"})

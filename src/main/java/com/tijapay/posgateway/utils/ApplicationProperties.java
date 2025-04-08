@@ -19,6 +19,42 @@ public class ApplicationProperties {
     private String mpesaPassKey;
     private String smsEndpoint;
     private String smsApiKey;
+    private String twilioAccountSid;
+    private String twilioAuthToken;
+    private String twilioWhatsappNumber;
+    private String twilioChefWhatsappNumber;
+
+    public String getTwilioAccountSid() {
+        return twilioAccountSid;
+    }
+
+    public void setTwilioAccountSid(String twilioAccountSid) {
+        this.twilioAccountSid = twilioAccountSid;
+    }
+
+    public String getTwilioAuthToken() {
+        return twilioAuthToken;
+    }
+
+    public void setTwilioAuthToken(String twilioAuthToken) {
+        this.twilioAuthToken = twilioAuthToken;
+    }
+
+    public String getTwilioWhatsappNumber() {
+        return twilioWhatsappNumber;
+    }
+
+    public void setTwilioWhatsappNumber(String twilioWhatsappNumber) {
+        this.twilioWhatsappNumber = twilioWhatsappNumber;
+    }
+
+    public String getTwilioChefWhatsappNumber() {
+        return twilioChefWhatsappNumber;
+    }
+
+    public void setTwilioChefWhatsappNumber(String twilioChefWhatsappNumber) {
+        this.twilioChefWhatsappNumber = twilioChefWhatsappNumber;
+    }
 
     public String getSmsEndpoint() {
         return smsEndpoint;
