@@ -31,6 +31,6 @@ public class WhatsAppService {
                         + "Payment Ref: " + "TXGHFY787HFH")
                 .create();
 
-        System.out.println("Message sent: " + message.getSid());
+        System.out.println("Message sent: " + message);
     }
 }
