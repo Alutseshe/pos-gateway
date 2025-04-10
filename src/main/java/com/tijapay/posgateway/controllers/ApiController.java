@@ -44,7 +44,7 @@ public class ApiController {
 
     @PostMapping(value = "payment")
     public OrderReponse payment(@RequestBody OrderRequest request){
-        whatsAppService.sendWhatsAppNotification(request);
+//        whatsAppService.sendWhatsAppNotification(request);
         return orderservice.payementRequest(request);
     }
 
