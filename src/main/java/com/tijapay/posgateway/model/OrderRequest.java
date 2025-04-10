@@ -8,10 +8,19 @@ public class OrderRequest {
     private String oderNumber;
     private String tableNumber;
     private Long msisdn;
+    private String paymentMethod;
     private String currency;
     private String countyCode;
     private Long amount;
     private List<String> orderItems;
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
     public List<String> getOrderItems() {
         return orderItems;

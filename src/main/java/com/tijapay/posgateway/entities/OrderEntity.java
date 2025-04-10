@@ -31,6 +31,8 @@ public class OrderEntity {
     private String orderItems;
     @Column(name = "payment_date")
     private LocalDate paymentDate;
+    @Column(name = "payment_method")
+    private String paymentMethod;
     //M-pesa STK Push Request details
     @Column(name ="merchant_request_id")
     private String merchantRequestID;
@@ -52,6 +54,14 @@ public class OrderEntity {
     private String countryCode;
     @Column(name ="transaction_date")
     private String transactionDate;
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
     public LocalDate getPaymentDate() {
         return paymentDate;
