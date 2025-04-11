@@ -23,6 +23,15 @@ public class ApplicationProperties {
     private String twilioAuthToken;
     private String twilioWhatsappNumber;
     private String twilioChefWhatsappNumber;
+    private int batchSize;
+
+    public int getBatchSize() {
+        return batchSize;
+    }
+
+    public void setBatchSize(int batchSize) {
+        this.batchSize = batchSize;
+    }
 
     public String getTwilioAccountSid() {
         return twilioAccountSid;

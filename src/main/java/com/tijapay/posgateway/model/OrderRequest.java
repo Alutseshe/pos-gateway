@@ -9,10 +9,20 @@ public class OrderRequest {
     private String tableNumber;
     private Long msisdn;
     private String paymentMethod;
+
+    private String customerName;
     private String currency;
     private String countyCode;
     private Long amount;
     private List<String> orderItems;
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
     public String getPaymentMethod() {
         return paymentMethod;

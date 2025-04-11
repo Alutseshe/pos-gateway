@@ -64,6 +64,7 @@ public class Orderservice {
         entity.setOrderItems(String.valueOf(request.getOrderItems()));
         entity.setPaymentDate(LocalDate.parse(orderDate));
         entity.setPaymentMethod(request.getPaymentMethod());
+        entity.setCustomerName(request.getCustomerName());
         orderRepository.save(entity);
 
         mpesaService.stkPushRequest(TijaPayUtils.stkPushRequest(applicationProperties.getMpesaBusinessShortCode(),

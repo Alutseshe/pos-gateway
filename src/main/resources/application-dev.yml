@@ -42,9 +42,12 @@ configs:
   sms-endpoint: https://api.africastalking.com/version1/messaging/bulk
   sms-api-key: MyAppApiKey
   twilio-account-sid: AC35fdb93d65f711ab9f14a73c1863a24b
-  twilio-auth-token: 73fa953f686234f6b0ef5be94e012070
+  twilio-auth-token: 6b09719c30596d969271bbf6b61d0e70
   twilio-whatsapp-number: whatsapp:+14155238886  # Your Twilio WhatsApp number
   twilio-chef-whatsapp-number: whatsapp:+254702615277  # Chef's WhatsApp number
+  scheduler-fixed-rate-query-status: 6000
+  scheduler-initial-delay-query-status: 6000
+  batch-size: 1
 
 
 
