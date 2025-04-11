@@ -64,7 +64,7 @@ public class ApiController {
         Map validateRes = new HashMap();
         try {
             System.out.println("MPESA Callback Received");
-            System.out.println(ConvertToJson.setJsonString(request));
+//            System.out.println(ConvertToJson.setJsonString(request));
 
             if (request.getBody().getStkCallback().getResultCode() == (0)){
                 log.info("--------- Mpesa Payment was Successful, Debit Completed ------- ");
@@ -75,11 +75,11 @@ public class ApiController {
                     updateMpesaReference.setMpesaReceiptNumber(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(1).getValue());
                     updateMpesaReference.setStatus("00");
                     updateMpesaReference.setStatusMessage("Paid");
-                    if (request.getBody().getStkCallback().getCallbackMetadata().getItem().get(2).getValue() == null) {
-                        updateMpesaReference.setTransactionDate(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(3).getValue());
-                    } else {
-                        updateMpesaReference.setTransactionDate(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(2).getValue());
-                    }
+//                    if (request.getBody().getStkCallback().getCallbackMetadata().getItem().get(2).getValue() == null) {
+//                        updateMpesaReference.setTransactionDate(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(3).getValue());
+//                    } else {
+//                        updateMpesaReference.setTransactionDate(request.getBody().getStkCallback().getCallbackMetadata().getItem().get(2).getValue());
+//                    }
                     System.out.println(new Gson().toJson(updateMpesaReference));
                     orderRepository.save(updateMpesaReference);
                 }
